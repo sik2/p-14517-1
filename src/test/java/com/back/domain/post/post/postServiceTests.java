@@ -107,4 +107,42 @@ public class postServiceTests {
         assertThat(posts).hasSize(1);
         System.out.println("3: " +posts);
     }
+
+    @Test
+    @DisplayName("게시물 내용 검색")
+    void t8 () {
+        List<Post> posts = postService.search("content", "내용 1");
+        System.out.println("1 : " + posts);
+        assertThat(posts).hasSize(1);
+
+        posts = postService.search("content", "내용");
+        assertThat(posts).hasSize(2);
+        System.out.println("2: " + posts);
+
+        posts = postService.search("content", "내용 2");
+        assertThat(posts).hasSize(1);
+        System.out.println("3: " +posts);
+    }
+
+    @Test
+    @DisplayName("게시물 제목 or 내용 검색")
+    void t9 () {
+        List<Post> posts = postService.search("", "제목 1");
+        assertThat(posts).hasSize(1);
+
+        posts = postService.search("", "제목");
+        assertThat(posts).hasSize(2);
+
+        posts = postService.search("", "제목 2");
+        assertThat(posts).hasSize(1);
+
+        posts = postService.search("", "내용 1");
+        assertThat(posts).hasSize(1);
+
+        posts = postService.search("", "내용");
+        assertThat(posts).hasSize(2);
+
+        posts = postService.search("", "내용 2");
+        assertThat(posts).hasSize(1);
+    }
 }
