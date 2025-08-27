@@ -28,5 +28,13 @@ public class PostService {
         postRepository.create(post);
         return post.getId();
     }
+
+    public void createV2(String title, String content) {
+        postRepository.createV2(title, content);
+    }
+
+    public int getLastInsertId() {
+        return postRepository.getLastInsertId();
+    }
 }
 
