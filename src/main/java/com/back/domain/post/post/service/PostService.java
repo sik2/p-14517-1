@@ -48,5 +48,9 @@ public class PostService {
             throw new IllegalStateException("게시물 수정 실패");
         }
     }
+
+    public List<Post> search(String kwType, String kw) {
+        return postRepository.search(kwType, kw);
+    }
 }
 
