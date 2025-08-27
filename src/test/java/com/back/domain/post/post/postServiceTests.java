@@ -73,4 +73,22 @@ public class postServiceTests {
 
         assertThat(posts).hasSize(1);
     }
+
+    @Transactional
+    @Test
+    @DisplayName("게시물 수정")
+    void t6 () {
+        // given: 기존 게시물 1번 불러오기
+        Post post = postService.findById(1);
+        assertThat(post).isNotNull();
+
+        // when: 제목/내용 수정
+        postService.update(1, "제목 1 수정", "내용 1 수정");
+
+        // then: 수정 결과 확인
+        Post updatedPost = postService.findById(1);
+
+        assertThat(updatedPost.getTitle()).isEqualTo("제목 1 수정");
+        assertThat(updatedPost.getContent()).isEqualTo("내용 1 수정");
+    }
 }
