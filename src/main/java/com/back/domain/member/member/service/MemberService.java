@@ -34,4 +34,8 @@ public class MemberService {
         memberRepository.save(member);
         return member.getId();
     }
+
+    public void deleteById(int id) {
+        memberRepository.deleteById(id);
+    }
 }

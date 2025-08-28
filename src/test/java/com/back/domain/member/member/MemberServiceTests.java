@@ -62,4 +62,15 @@ public class MemberServiceTests {
         assertThat(member.getPassword()).isEqualTo("{noop}1234");
     }
 
+    @Test
+    @DisplayName("회원 삭제")
+    void t5() {
+        // when: 회원 삭제
+        memberService.deleteById(1);
+
+        List<Member> members = memberService.findAll();
+
+        assertThat(members).hasSize(1);
+    }
+
 }

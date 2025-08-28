@@ -28,4 +28,9 @@
         `name` = #{name},
         email = #{email}
     </insert>
+
+    <!-- 회원삭제 -->
+    <delete id="deleteById">
+        DELETE FROM member where id = #{id}
+    </delete>
 </mapper>
