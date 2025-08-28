@@ -158,4 +158,17 @@ public class postServiceTests {
         assertThat(posts.get(0).getTitle()).isEqualTo("제목 2");
         assertThat(posts.get(1).getTitle()).isEqualTo("제목 1");
     }
+
+    @Test
+    @DisplayName("정렬된 게시물 조회 - 생성일 내림차순")
+    void t12() {
+        postService.create("제목 0", "내용 0");
+        List<Post> posts = postService.findAllOrdered("createDate", "desc");
+        System.out.println(posts);
+        assertThat(posts).hasSize(3);
+
+        assertThat(posts.get(0).getTitle()).isEqualTo("제목 0");
+        assertThat(posts.get(1).getTitle()).isEqualTo("제목 2");
+        assertThat(posts.get(2).getTitle()).isEqualTo("제목 1");
+    }
 }
