@@ -47,4 +47,8 @@ public class MemberService {
         }
 
     }
+
+    public List<Member> search(String kwType, String kw) {
+        return memberRepository.search(kwType, kw);
+    }
 }

@@ -26,4 +26,6 @@ public interface MemberRepository {
             @Param("name") String name,
             @Param("email") String email
     );
+
+    List<Member> search(String kwType, String kw);
 }
