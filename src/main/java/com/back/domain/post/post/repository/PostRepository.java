@@ -84,11 +84,23 @@ public interface PostRepository {
     int deleteById(int id);
 
     @Update("""
-        UPDATE post
-        set modifyDate = NOW(),
-            title = #{title},
-            content = #{content}
-        where id = #{id}
+        <script>
+            UPDATE post
+            <set>
+                modifyDate = NOW(),
+                <if test="title != null and title != ''">
+                    title = #{title}
+                </if>
+                <if test="content != null and content != ''">
+                    content = #{content}
+                </if>
+            </set>
+            <where>
+                 <if test="id != null and id > 0">
+                    id = #{id}
+                 </if>
+             </where>
+         </script>
     """)
     int update(
             @Param("id") int id,
