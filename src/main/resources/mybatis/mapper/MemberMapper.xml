@@ -12,4 +12,20 @@
     <select id="findById" resultType="Member">
         SELECT * FROM member WHERE id = #{id}
     </select>
+
+    <!-- 단일 회원 조회(username) -->
+    <select id="findByUsername" resultType="Member">
+        SELECT * FROM member WHERE username = #{username}
+    </select>
+
+    <!--  회원생성  -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO member
+        SET createDate = now(),
+        modifyDate = now(),
+        username = #{username},
+        `password` = #{password},
+        `name` = #{name},
+        email = #{email}
+    </insert>
 </mapper>
