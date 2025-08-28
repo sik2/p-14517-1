@@ -4,7 +4,7 @@
 <mapper namespace="com.back.domain.member.member.repository.MemberRepository">
 
     <!--  전체 게시물 조회 -->
-    <select id="findAll" resultType="com.back.domain.member.member.dto.Member">
+    <select id="findAll" resultType="Member">
         SELECT * FROM member
     </select>
 
