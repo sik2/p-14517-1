@@ -16,6 +16,9 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public List<Post> findAllOrdered(String orderBy, String orderByDirection) {
+        return postRepository.findAllOrdered(orderBy, orderByDirection);
+    }
     public Post findById(int id) {
         return postRepository.findById(id);
     }

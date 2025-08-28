@@ -19,6 +19,21 @@ public interface PostRepository {
     @Select("""
     <script>
     SELECT * 
+    FROM post
+        <if test="orderBy != null and orderBy != ''">
+        ORDER BY title ASC
+        </if>
+    </script>
+    """)
+    List<Post> findAllOrdered(
+            @Param("orderBy") String orderBy,
+            @Param("orderByDirection") String orderByDirection
+    );
+
+
+    @Select("""
+    <script>
+    SELECT * 
     FROM post   
     WHERE id = #{id}
     </script>
