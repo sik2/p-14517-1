@@ -89,10 +89,10 @@ public interface PostRepository {
             <set>
                 modifyDate = NOW(),
                 <if test="title != null and title != ''">
-                    title = #{title}
+                    title = #{title},
                 </if>
                 <if test="content != null and content != ''">
-                    content = #{content}
+                    content = #{content},
                 </if>
             </set>
             <where>
