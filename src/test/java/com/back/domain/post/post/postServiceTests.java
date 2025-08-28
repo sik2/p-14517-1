@@ -148,4 +148,14 @@ public class postServiceTests {
         assertThat(posts.get(0).getTitle()).isEqualTo("제목 1");
         assertThat(posts.get(1).getTitle()).isEqualTo("제목 2");
     }
+
+
+    @Test
+    @DisplayName("정렬된 게시물 조회 - 제목 내림차순")
+    void t11() {
+        List<Post> posts = postService.findAllOrdered("title", "desc");
+        assertThat(posts).hasSize(2);
+        assertThat(posts.get(0).getTitle()).isEqualTo("제목 2");
+        assertThat(posts.get(1).getTitle()).isEqualTo("제목 1");
+    }
 }

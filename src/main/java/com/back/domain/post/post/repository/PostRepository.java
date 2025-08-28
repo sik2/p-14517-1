@@ -21,7 +21,10 @@ public interface PostRepository {
     SELECT * 
     FROM post
         <if test="orderBy != null and orderBy != ''">
-        ORDER BY title ASC
+        ORDER BY title
+        </if>
+        <if test="orderByDirection != null and orderByDirection.toLowerCase() == 'desc'">
+            DESC
         </if>
     </script>
     """)
