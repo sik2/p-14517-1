@@ -33,4 +33,16 @@
     <delete id="deleteById">
         DELETE FROM member where id = #{id}
     </delete>
+
+    <!-- 회원정보 수정 -->
+    <update id="update">
+        UPDATE member
+        SET
+            modifyDate = NOW(),
+            username = #{username},
+            password = #{password},
+            name = #{name},
+            email = #{email}
+        WHERE id = #{id}
+    </update>
 </mapper>
