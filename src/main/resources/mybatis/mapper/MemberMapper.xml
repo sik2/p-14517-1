@@ -72,6 +72,13 @@
                  <when test="kwType == 'email'">
                      email LIKE CONCAT('%', #{kw}, '%')
                  </when>
+                <otherwise>
+                    username LIKE CONCAT('%', #{kw}, '%')
+                    OR
+                    name LIKE CONCAT('%', #{kw}, '%')
+                    OR
+                    email LIKE CONCAT('%', #{kw}, '%')
+                </otherwise>
              </choose>
         </where>
     </select>
