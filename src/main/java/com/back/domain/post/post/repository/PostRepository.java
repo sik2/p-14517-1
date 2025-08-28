@@ -136,4 +136,15 @@ public interface PostRepository {
             @Param("kwType") String kwType,
             @Param("kw") String kw
     );
+
+    @Delete("""
+    <script>
+        DELETE FROM post
+        where id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </script>
+    """)
+    int deleteByIds(@Param("ids") List<Integer> ids);
 }

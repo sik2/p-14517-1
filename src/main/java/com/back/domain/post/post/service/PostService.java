@@ -55,5 +55,13 @@ public class PostService {
     public List<Post> search(String kwType, String kw) {
         return postRepository.search(kwType, kw);
     }
+
+    public int deleteByIds(List<Integer> ids) {
+        if (ids == null || ids.isEmpty()) {
+            return 0;
+        }
+
+        return postRepository.deleteByIds(ids);
+    }
 }
 
