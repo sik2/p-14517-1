@@ -8,4 +8,8 @@
         SELECT * FROM member
     </select>
 
+    <!-- 단일 회원 조회(ID) -->
+    <select id="findById" resultType="Member">
+        SELECT * FROM member WHERE id = #{id}
+    </select>
 </mapper>
