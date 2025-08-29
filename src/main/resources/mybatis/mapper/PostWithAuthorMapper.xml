@@ -38,12 +38,30 @@
             M.email,
             M.createDate as author_createDate,
             M.modifyDate as author_modifyDate
-        from post P
+        FROM post P
         LEFT JOIN member M
         ON P.memberId = M.id
     </select>
 
     <select id="findByIdWithAuthor" resultMap="PostWithAuthorResultMap">
+        SELECT
+            P.id as post_id,
+            P.title,
+            P.content,
+            P.memberId,
+            P.createDate as post_createDate,
+            P.modifyDate as post_modifyDate,
+            M.id as author_id,
+            M.username,
+            M.name,
+            M.email,
+            M.createDate as author_createDate,
+            M.modifyDate as author_modifyDate
+        FROM post P
+            LEFT JOIN member M
+            ON P.memberId = M.id
+        WHERE
+            P.id = #{id}
 
     </select>
 

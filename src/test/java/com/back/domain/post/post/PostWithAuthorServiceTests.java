@@ -24,7 +24,7 @@ public class PostWithAuthorServiceTests {
     @DisplayName("게시물 다건 조회")
     void t1 () {
         List<PostWithAuthor> posts = postWithAuthorService.findAllWithAuthor();
-        System.out.println(posts);
+
         assertThat(posts).hasSize(2);
         assertThat(posts.get(0).getTitle()).isEqualTo("제목 1");
         assertThat(posts.get(1).getTitle()).isEqualTo("제목 2");
@@ -33,4 +33,13 @@ public class PostWithAuthorServiceTests {
         assertThat(posts.get(1).getAuthor().getName()).isEqualTo("유저2");
     }
 
+    @Test
+    @DisplayName("게시물 단건 조회")
+    void t2 () {
+        PostWithAuthor post = postWithAuthorService.findByIdWithAuthor(1);
+        System.out.println(post);
+
+        assertThat(post.getTitle()).isEqualTo("제목 1");
+        assertThat(post.getAuthor().getName()).isEqualTo("유저1");
+    }
 }
