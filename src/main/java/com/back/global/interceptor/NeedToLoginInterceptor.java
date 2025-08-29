@@ -2,6 +2,7 @@ package com.back.global.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,7 +14,11 @@ public class NeedToLoginInterceptor  implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.debug("NeedToLoginInterceptor::preHandle 실행됨");
 
-        boolean isLogined = false;
+        HttpSession session = request.getSession();
+        Integer loginedMemerId =  (Integer) session.getAttribute("loginedMemerId");
+
+        // TODO: 임시처리
+        boolean isLogined = loginedMemerId != null;
 
         // 비회원 접근 경우
         if (isLogined == false) {
