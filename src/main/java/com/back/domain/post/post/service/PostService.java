@@ -64,5 +64,9 @@ public class PostService {
 
         return postRepository.deleteByIds(ids);
     }
+
+    public Post findByIdWithAuthorName(int id) {
+        return postRepository.findByIdWithAuthorName(id);
+    }
 }
 
