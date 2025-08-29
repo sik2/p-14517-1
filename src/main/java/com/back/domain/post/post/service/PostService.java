@@ -68,5 +68,9 @@ public class PostService {
     public Post findByIdWithAuthorName(int id) {
         return postRepository.findByIdWithAuthorName(id);
     }
+
+    public List<Post> searchWithAuthorName(String kwType, String kw) {
+        return postRepository.searchWithAuthorName(kwType, kw);
+    }
 }
 
