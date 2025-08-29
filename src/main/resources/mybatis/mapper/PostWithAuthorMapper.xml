@@ -4,7 +4,7 @@
 <mapper namespace="com.back.domain.post.post.repository.PostWithAuthorRepository">
     <!-- Post와 Member 조인을 위한 ResultMap -->
     <resultMap id="PostWithAuthorResultMap" type="PostWithAuthor">
-        <!-- Post 필드 매핑 -->
+        <!-- PostWithAuthor 필드 매핑 -->
         <id property="id" column="post_id"/>
         <result property="title" column="title"/>
         <result property="content" column="content"/>
