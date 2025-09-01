@@ -59,8 +59,27 @@ public class Rq {
         return (String) session.getAttribute("loginedMemberName");
     }
 
+    public String getLoginedMemberUserName() {
+        return (String) session.getAttribute("loginedMemberUserName");
+    }
+
+    public String getLoginedMemberEmail() {
+        return (String) session.getAttribute("loginedMemberEmail");
+    }
+
+
+    public Member getLoginedMember() {
+        int id = getLoginedMemberId();
+        String username = getLoginedMemberUserName();
+        String name = getLoginedMemberName();
+        String email = getLoginedMemberEmail();
+
+        return new Member(id, username, name, email);
+    }
+
+
     public void setLoginDone(Member member) {
-        session.setAttribute("loginedMemerId", member.getId());
+        session.setAttribute("loginedMemberId", member.getId());
         session.setAttribute("loginedMemberUsername", member.getUsername());
         session.setAttribute("loginedMemberName", member.getName());
         session.setAttribute("loginedMemberEmail", member.getEmail());

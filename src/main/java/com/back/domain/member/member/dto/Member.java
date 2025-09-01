@@ -1,9 +1,11 @@
 package com.back.domain.member.member.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
 @Data
 public class Member {
     private int id;
@@ -14,6 +16,13 @@ public class Member {
 
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
+
+    public Member(int id, String username, String name, String email) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.email = email;
+    }
 
     public boolean matchPassword(String password) {
         return this.password.substring("{noop}".length()).equals(password);
