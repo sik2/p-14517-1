@@ -17,7 +17,7 @@ public class NeedToLoginInterceptor  implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("this" + this);
+        log.debug("this : " + this);
         log.debug("NeedToLoginInterceptor::preHandle 실행됨");
 
         rq.increaseCount();
