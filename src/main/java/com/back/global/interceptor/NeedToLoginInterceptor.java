@@ -3,7 +3,6 @@ package com.back.global.interceptor;
 import com.back.global.Rq.Rq;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -25,14 +24,8 @@ public class NeedToLoginInterceptor  implements HandlerInterceptor {
                 rq: %s, rq.count: %s
                 """.formatted(rq, rq.getCount()));
 
-        HttpSession session = request.getSession();
-        Integer loginedMemerId =  (Integer) session.getAttribute("loginedMemerId");
-
-        // TODO: 임시처리
-        boolean isLogined = loginedMemerId != null;
-
         // 비회원 접근 경우
-        if (isLogined == false) {
+        if (rq.isLogout()) {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
             response.getWriter().append("로그인 후 이용바랍니다.");

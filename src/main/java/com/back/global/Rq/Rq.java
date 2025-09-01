@@ -40,6 +40,21 @@ public class Rq {
         return url;
     }
 
+    public boolean isLogined() {
+        return getLoginedMemberId() > 0;
+    }
+
+    public boolean isLogout() {
+        return isLogined() == false;
+    }
+
+    public int getLoginedMemberId() {
+        Integer loginedMemberId = (Integer) session.getAttribute("loginedMemberId");
+        if (loginedMemberId == null) return 0;
+
+        return loginedMemberId;
+    }
+
     public String getLoginedMemberName() {
         return (String) session.getAttribute("loginedMemberName");
     }
